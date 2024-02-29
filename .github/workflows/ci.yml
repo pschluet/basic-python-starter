@@ -1,0 +1,14 @@
+name: Continuous Integration Checks
+on: [push]
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Format Check
+        run: black src --check
+      - name: Typing Check
+        run: mypy src
+      - name: Lint Check
+        run: pylint src
