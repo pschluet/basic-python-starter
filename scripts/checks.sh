@@ -2,10 +2,10 @@
 set -e
 
 # printf "Formatting Check\n"
-# black src --check
+black src --check
 
 # printf "\nTyping Check\n"
-# mypy src
+mypy src
 
 printf "\nLint Check\n"
 pylint src
