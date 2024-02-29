@@ -3,9 +3,19 @@ on: [push]
 jobs:
   ci:
     runs-on: ubuntu-latest
+
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          # Semantic version range syntax or exact version of a Python version
+          python-version: '3.11.4'
+          # Optional - x64 or x86 architecture, defaults to x64
+          architecture: 'x64'
+      - name: Install Dev Dependencies
+        run: pip install -r dev-requirements.txt
       - name: Format Check
         run: black src --check
       - name: Typing Check
